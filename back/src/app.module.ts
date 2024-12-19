@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import typeormConfig from './config/typeOrm'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AppRepository } from './app.repository';
+import { Form } from './entities/form.entity';
 
 @Module({
   imports: [
@@ -13,8 +15,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
+    TypeOrmModule.forFeature([Form]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,AppController,AppRepository],
 })
 export class AppModule {}

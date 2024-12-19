@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { AppRepository } from './app.repository';
+import { formDto } from './dto/form.dto';
 
 @Injectable()
 export class AppService {
   constructor(private readonly appRepository: AppRepository){}
-  getHello(): string {
-    return 'Hello World! woold';
+  getRequestService(){
+    return this.appRepository.getRequest();
   }
-  newFormService(form: any) {
+  newFormService(form: formDto) {
     return this.appRepository.newForm(form)
   }
 }

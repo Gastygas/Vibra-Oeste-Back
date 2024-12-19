@@ -18,4 +18,10 @@ export class Form{
 
     @Column({type:'text', nullable:false})
     address:string;
+
+    @Column({ type: 'varchar', nullable: false })
+    lat: string;
+  
+    @Column({ type: 'varchar', nullable: false })
+    lng: string;
 }

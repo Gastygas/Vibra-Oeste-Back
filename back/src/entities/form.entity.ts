@@ -19,9 +19,18 @@ export class Form{
     @Column({type:'text', nullable:false})
     address:string;
 
-    @Column({ type: 'varchar', nullable: false })
+    @Column({type:"text",default:0})
+    speakers:string;
+
+    @Column({type:"text",default:0})
+    console:string;
+
+    @Column({type:"text",default:0})
+    microphones:string;
+
+    @Column({ type: 'varchar', default:"none",  })
     lat: string;
   
-    @Column({ type: 'varchar', nullable: false })
+    @Column({ type: 'varchar', default:"none" })
     lng: string;
 }

@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppRepository } from './app.repository';
 import { Form } from './entities/form.entity';
+import { Contact } from './entities/contact.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Form } from './entities/form.entity';
       useFactory: (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
-    TypeOrmModule.forFeature([Form]),
+    TypeOrmModule.forFeature([Form,Contact]),
   ],
   controllers: [AppController],
   providers: [AppService,AppController,AppRepository],

@@ -25,6 +25,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./back/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: gastongonzalez17/ecommerce:latest

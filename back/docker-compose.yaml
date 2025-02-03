@@ -1,0 +1,26 @@
+services:
+  nestapp:
+    image: gastongonzalez17/nest-demo:latest # Usa la imagen de Docker Hub
+    ports:
+      - "3001:3000" # Mapea el puerto 3001 local al puerto 3000 del contenedor
+    env_file:
+      - .env.development # Variables de entorno desde el archivo .env
+    depends_on:
+      - postgresdb # Asegura que PostgreSQL esté iniciado antes
+    restart: always # Reinicia automáticamente si se detiene
+
+  postgresdb:
+    image: postgres:13 # Usa una imagen estable de PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Volumen persistente para los datos
+    # env_file:
+    #   - .env.development # Variables de entorno desde el archivo .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bocacapo
+      POSTGRES_DB: fakeproject4
+    ports:
+      - "5432:5432" # Expon el puerto de PostgreSQL
+
+volumes:
+  pgdata:
